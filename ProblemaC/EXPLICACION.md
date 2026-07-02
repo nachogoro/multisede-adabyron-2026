@@ -81,7 +81,7 @@ Implementada como recursión con memoización queda muy compacta. La preocupaci�
 natural es la profundidad de la pila: con $w = 10^5$ y una pendiente larga, el
 árbol de llamadas puede tener profundidad $w$. Sin embargo, cada frame de
 `resolver` solo guarda el retorno y un par de variables locales (del orden de
-$32$–$48$ bytes con la sobrecarga típica del compilador). Con los $8$ MB de
+32–48 bytes con la sobrecarga típica del compilador). Con los $8$ MB de
 pila por defecto debería entrar holgado. Si el escenario fuera $w \sim 10^6$ o
 un juez con la pila recortada, lo razonable sería desenrollar la recursión a
 una pila explícita.
