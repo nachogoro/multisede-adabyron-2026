@@ -65,7 +65,7 @@ esa ronda.)
 
 Cada consulta cuesta $O(\log N)$.
 
-# Opción 2: Ventana deslizante
+## Opción 2: Ventana deslizante
 
 La búsqueda binaria nos da $O(\log N)$ por partida, pero podemos
 afinar a tiempo amortizado constante. Tanto $k_{\text{nuestro}}$
@@ -78,10 +78,10 @@ $O(N)$ pasos a lo largo de todo el barrido.
 
 El resultado se vuelca en un solo vector indexado por $i$:
 
-- Si la partida que arranca en $i$ la ganamos, `next_after_win[i]`
+- Si la partida que arranca en $i$ la ganamos, `nextAfterWin[i]`
   es el índice de la ronda donde empieza la siguiente partida:
   exactamente lo que necesita la recurrencia del DP.
-- Si la perdemos, `next_after_win[i] = -1`.
+- Si la perdemos, `nextAfterWin[i] = -1`.
 
 Con esa convención no hacen falta dos vectores separados (uno con
 "quién gana" y otro con "dónde sigue"): el $-1$ codifica el
@@ -90,8 +90,8 @@ de continuación implica ya que la partida se ha ganado. La
 recurrencia queda
 
 $$ \mathrm{dp}[i] = \begin{cases}
-   0 & \text{si } \mathrm{next\_after\_win}[i] = -1 \\
-   1 + \mathrm{dp}[\mathrm{next\_after\_win}[i]] & \text{en otro caso}
+0 & \text{si } \mathrm{nextAfterWin}[i] = -1 \\
+1 + \mathrm{dp}[\mathrm{nextAfterWin}[i]] & \text{en otro caso}
 \end{cases} $$
 
 
@@ -112,6 +112,9 @@ Así, cualquier partida que empiece dentro de los límites $[0, N)$
 acabará con un claro vencedor, y no tendremos ninguna partida
 inacabada que tratar como caso especial a la hora de definir las
 estructuras que nos indican en qué posición acaba cada partida.
+
+Además, obtendremos siempre un valor para $k_{nuestro}$ y
+$k_{rival}$, que nos evita tener que lidiar con casos especiales.
 
 # Coste
 
